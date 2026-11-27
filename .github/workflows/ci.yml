@@ -1,0 +1,25 @@
+name: Pipeline CI - Proyecto Sencillo
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  ci-pipeline:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 1. Clonación del repositorio
+        uses: actions/checkout@v4
+
+      - name: 2. Instalación de dependencias
+        run: npm ci
+
+      - name: 3. Ejecución de pruebas básicas
+        run: npm test
+
+      - name: 4. Construcción del proyecto
+        run: npm run build
+
+      - name: 5. Simulación de despliegue
+        run: echo "Despliegue realizado correctamente en ambiente de pruebas"
